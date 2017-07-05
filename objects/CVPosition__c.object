@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Position forming the Career History of this Candidate&apos;s CV or Resume</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>false</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>false</enableSharing>
+    <enableStreamingApi>false</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>CV__c</fullName>
+        <description>Link to CV</description>
+        <externalId>false</externalId>
+        <label>CV</label>
+        <referenceTo>CurriculumVitae__c</referenceTo>
+        <relationshipLabel>Career History</relationshipLabel>
+        <relationshipName>CV_Positions</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Company__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Company that Candidate worked for during this position</description>
+        <externalId>false</externalId>
+        <label>Company</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Positions</relationshipLabel>
+        <relationshipName>CV_Positions</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <description>Job description</description>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>EmploymentType__c</fullName>
+        <externalId>false</externalId>
+        <label>Employment Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Contract</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Permanent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Voluntary</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Work Experience</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>EndDate__c</fullName>
+        <description>Date that this position ended</description>
+        <externalId>false</externalId>
+        <label>End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>EndMonthYear__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE( 
+DAY( EndDate__c ), 
+1, &quot; to Jan&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)), 
+2, &quot; to Feb&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)), 
+3, &quot; to Mar&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)), 
+4, &quot; to Apr&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)), 
+5, &quot; to May&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)), 
+6, &quot; to Jun&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)), 
+7, &quot; to Jul&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)), 
+8, &quot; to Aug&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)), 
+9, &quot; to Sep&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)), 
+10, &quot; to Oct&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)), 
+11, &quot; to Nov&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)), 
+12, &quot; to Dec&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)), 
+&quot; to present&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>End Month Year</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MonthYearTest__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(  StartDate__c  )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>MonthYearTest</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Any project that this candidate has worked on</description>
+        <externalId>false</externalId>
+        <label>Project</label>
+        <referenceTo>Project__c</referenceTo>
+        <relationshipLabel>Projects</relationshipLabel>
+        <relationshipName>CV_Positions</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Responsibilities__c</fullName>
+        <externalId>false</externalId>
+        <label>Responsibilities</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Business Analysis</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DBA and I&amp;O Support</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Development</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Documentation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Estimating</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Interviewing Potential Developers</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Liaising with Business</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mentoring</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Performance Tuning</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Release Management</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Support</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Team Lead</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Technical Design and Analysis</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TIA Training</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Training</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>UAT Support</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Role__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The role that this candidate assumed for this position</description>
+        <externalId>false</externalId>
+        <label>Role</label>
+        <referenceTo>Role__c</referenceTo>
+        <relationshipLabel>Roles</relationshipLabel>
+        <relationshipName>CV_Positions</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SkillsUsed__c</fullName>
+        <externalId>false</externalId>
+        <globalPicklist>GlobalSkillSetValues</globalPicklist>
+        <label>Skills Used</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>StartDate__c</fullName>
+        <description>Date that this position started</description>
+        <externalId>false</externalId>
+        <label>Start Date</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>StartMonthYear__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(
+  DAY(StartDate__c),
+  1, &quot;Jan&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)),
+  2, &quot;Feb&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)),
+  3, &quot;Mar&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)),
+  4, &quot;Apr&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)),
+  5, &quot;May&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)),
+  6, &quot;Jun&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)),
+  7, &quot;Jul&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)),
+  8, &quot;Aug&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)),
+  9, &quot;Sep&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)),
+  10, &quot;Oct&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)),
+  11, &quot;Nov&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c)),
+  &quot;Dec&quot; + &apos; &apos; + TEXT(YEAR( StartDate__c))
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Start Month Year</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>CV Position</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Role__c</columns>
+        <columns>Company__c</columns>
+        <columns>Description__c</columns>
+        <columns>StartMonthYear__c</columns>
+        <columns>EndMonthYear__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>CVP-{000000}</displayFormat>
+        <label>Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>CV Positions</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>
